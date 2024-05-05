@@ -7,5 +7,5 @@ export default defineConfig({
   build: {
     outDir: "./build",
   },
-  base: "first-react",
+  base: "homework-34",
 })
