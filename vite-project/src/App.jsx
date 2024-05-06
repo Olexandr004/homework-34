@@ -19,9 +19,18 @@ function App() {
     };
 
     const showResult = () => {
-        const maxCount = Math.max(...emojis.map(emoji => emoji.count));
-        const winEmoji = emojis.find(emoji => emoji.count === maxCount);
-        setWinner(winEmoji.emoji);
+        const counts = emojis.map(emoji => emoji.count);
+        const totalClicks = counts.reduce((acc, curr) => acc + curr, 0);
+        const maxCount = Math.max(...counts);
+        const winners = emojis.filter(emoji => emoji.count === maxCount);
+
+        if (winners.length === emojis.length || totalClicks === 0) {
+            setWinner('No Winner');
+        } else if (winners.length === 1) {
+            setWinner(winners[0].emoji);
+        } else {
+            setWinner('No Winner');
+        }
     };
 
     return (
